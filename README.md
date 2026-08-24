@@ -19,14 +19,16 @@ python3 -m http.server 8080
 
 Open http://127.0.0.1:8080
 
-## Heart QR
+## GitHub Pages
 
-After the GitHub Pages URL is live:
+This machine needs a GitHub login first:
 
 ```bash
-python3 -m pip install -r requirements.txt
-python3 scripts/make_heart_qr.py --url "https://YOURUSER.github.io/love-gift/"
+gh auth login
+./scripts/deploy.sh
 ```
+
+That creates a public repo, turns on Pages, and rebuilds the QR with the live URL.
 
 - `qr/qr-heart.png` — heart shape (pretty; some cameras fail)
 - `qr/qr-square.png` — backup, scans reliably
