@@ -23,22 +23,34 @@ function nextOf(name) {
 
 function faceSvg(mood) {
   const mouths = {
-    sad: '<path d="M36 62c8 6 20 6 28 0" fill="none" stroke="#4a2430" stroke-width="3" stroke-linecap="round"/>',
-    mid: '<path d="M38 64h24" fill="none" stroke="#4a2430" stroke-width="3" stroke-linecap="round"/>',
-    high: '<path d="M34 58c8 14 24 14 32 0" fill="none" stroke="#4a2430" stroke-width="3" stroke-linecap="round"/>',
-    win: '<path d="M34 56c8 16 24 16 32 0" fill="none" stroke="#4a2430" stroke-width="3"/><circle cx="50" cy="62" r="5" fill="#ff8aa0"/>',
+    sad: '<path d="M40 68c6 5 14 5 20 0" fill="none" stroke="#5a3040" stroke-width="2.4" stroke-linecap="round"/>',
+    mid: '<path d="M42 68h16" fill="none" stroke="#5a3040" stroke-width="2.6" stroke-linecap="round"/>',
+    high: '<path d="M38 64c7 12 17 12 24 0" fill="none" stroke="#5a3040" stroke-width="2.4" stroke-linecap="round"/>',
+    win: '<ellipse cx="50" cy="70" rx="8" ry="6" fill="#ff8aa8"/><path d="M38 62c7 14 17 14 24 0" fill="none" stroke="#5a3040" stroke-width="2.4"/>',
   };
   const tears = mood === "sad"
-    ? '<path d="M28 48c0 8-6 12-3 18" fill="none" stroke="#7eb6ff" stroke-width="3"/><path d="M72 48c0 8 6 12 3 18" fill="none" stroke="#7eb6ff" stroke-width="3"/>'
+    ? '<ellipse cx="30" cy="62" rx="3" ry="6" fill="#8ec8ff"/><ellipse cx="70" cy="62" rx="3" ry="6" fill="#8ec8ff"/>'
     : "";
-  return `<svg class="face" viewBox="0 0 100 100" aria-hidden="true">
-    <circle cx="50" cy="50" r="38" fill="#fff"/>
-    <circle cx="38" cy="44" r="4" fill="#4a2430"/>
-    <circle cx="62" cy="44" r="4" fill="#4a2430"/>
-    <circle cx="34" cy="52" r="5" fill="#ffc1cf"/>
-    <circle cx="66" cy="52" r="5" fill="#ffc1cf"/>
+  const spark = mood === "win" || mood === "high"
+    ? '<path d="M16 28l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#ffd36a"/><path d="M84 24l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" fill="#ffd36a"/>'
+    : "";
+  return `<svg class="face face-${mood}" viewBox="0 0 100 110" aria-hidden="true">
+    <ellipse cx="28" cy="28" rx="12" ry="16" fill="#fff6f8" stroke="#5a3040" stroke-width="2.2"/>
+    <ellipse cx="72" cy="28" rx="12" ry="16" fill="#fff6f8" stroke="#5a3040" stroke-width="2.2"/>
+    <ellipse cx="28" cy="30" rx="7" ry="10" fill="#ffb7c8"/>
+    <ellipse cx="72" cy="30" rx="7" ry="10" fill="#ffb7c8"/>
+    <circle cx="50" cy="58" r="36" fill="#fff6f8" stroke="#5a3040" stroke-width="2.4"/>
+    <ellipse cx="38" cy="56" rx="7" ry="9" fill="#fff"/>
+    <ellipse cx="62" cy="56" rx="7" ry="9" fill="#fff"/>
+    <circle cx="39" cy="57" r="4.2" fill="#3a2230"/>
+    <circle cx="63" cy="57" r="4.2" fill="#3a2230"/>
+    <circle cx="40.5" cy="55.2" r="1.4" fill="#fff"/>
+    <circle cx="64.5" cy="55.2" r="1.4" fill="#fff"/>
+    <ellipse cx="32" cy="66" rx="7" ry="4.5" fill="#ffc3d4"/>
+    <ellipse cx="68" cy="66" rx="7" ry="4.5" fill="#ffc3d4"/>
     ${mouths[mood] || mouths.mid}
     ${tears}
+    ${spark}
   </svg>`;
 }
 
@@ -58,32 +70,47 @@ function meterSvg() {
 }
 
 function rosesSvg() {
-  return `<svg class="rose-bunch" viewBox="0 0 140 160">
-    <path d="M70 70 C70 120 40 150 40 150 M70 80 C80 130 100 150 110 155" stroke="#3d8b5a" stroke-width="4" fill="none"/>
-    <circle cx="58" cy="52" r="18" fill="#e23b55"/>
-    <circle cx="80" cy="46" r="16" fill="#c43d5c"/>
-    <circle cx="70" cy="62" r="15" fill="#ff5d78"/>
-    <path d="M40 150 h20 v8 h-20z" fill="#fff"/><path d="M46 150 v-6 h8 v6" fill="#e85a7a"/>
+  return `<svg class="rose-bunch" viewBox="0 0 160 180">
+    <path d="M80 78c-4 30-28 62-36 72M80 86c8 34 28 58 40 68" stroke="#4ea36a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="52" cy="118" rx="10" ry="6" fill="#6dcb86" transform="rotate(-30 52 118)"/>
+    <ellipse cx="112" cy="122" rx="10" ry="6" fill="#6dcb86" transform="rotate(28 112 122)"/>
+    <circle cx="68" cy="58" r="20" fill="#ff4d73"/>
+    <circle cx="92" cy="50" r="18" fill="#e23b5c"/>
+    <circle cx="84" cy="70" r="17" fill="#ff7a96"/>
+    <circle cx="78" cy="54" r="8" fill="#ffd0da"/>
+    <path d="M44 154h24v10h-24z" fill="#fff"/><path d="M52 148h8v16h-8z" fill="#ff6b8a"/>
   </svg>`;
 }
 
 function boxSvg() {
-  return `<svg class="box-svg" viewBox="0 0 80 86">
-    <rect x="10" y="34" width="60" height="42" rx="6" fill="#b9e0ff"/>
-    <rect x="8" y="22" width="64" height="16" rx="5" fill="#ff9eb8"/>
-    <rect x="36" y="22" width="8" height="54" fill="#ff7a9a"/>
-    <ellipse cx="40" cy="22" rx="14" ry="10" fill="#ff7a9a"/>
+  return `<svg class="box-svg" viewBox="0 0 90 100">
+    <rect x="12" y="40" width="66" height="46" rx="8" fill="#c9ecff"/>
+    <rect x="10" y="28" width="70" height="18" rx="7" fill="#ff9ec0"/>
+    <rect x="40" y="28" width="10" height="58" fill="#ff7aa8"/>
+    <ellipse cx="45" cy="26" rx="16" ry="11" fill="#ff7aa8"/>
+    <ellipse cx="38" cy="22" rx="8" ry="6" fill="#ffd0e0"/>
+    <circle cx="72" cy="22" r="5" fill="#ffd36a"/>
   </svg>`;
+}
+
+function decoStickers() {
+  return `<div class="stickers" aria-hidden="true">
+    <span class="st st-star">✦</span>
+    <span class="st st-heart">♡</span>
+    <span class="st st-plane">✈</span>
+    <span class="st st-bow">🎀</span>
+  </div>`;
 }
 
 function renderLock() {
   const root = document.getElementById("screen-lock");
   root.innerHTML = "";
   root.append(
-    el(`<h1 class="en-title">${C.lock.heading}</h1>`),
+    el(`<p class="kicker">a little gift</p>`),
+    el(`<h1 class="en-title pretty">${C.lock.heading}</h1>`),
     el(`<p class="lo">${C.lock.body}</p>`),
-    el(`<div class="card" style="text-align:center">${faceSvg("mid")}<p class="hint">For ${C.herName}</p></div>`),
-    el(`<button class="btn" type="button" id="lockBtn">${C.lock.button}</button>`)
+    el(`<div class="card cute" style="text-align:center">${decoStickers()}${faceSvg("high")}<p class="for-name">For ${C.herName}</p><p class="hint">tap when you are ready ♡</p></div>`),
+    el(`<button class="btn" type="button" id="lockBtn">♡  ${C.lock.button}</button>`)
   );
   root.querySelector("#lockBtn").onclick = () => nextOf("lock");
 }
@@ -99,7 +126,7 @@ function renderMeter() {
   const root = document.getElementById("screen-meter");
   root.innerHTML = "";
   root.append(
-    el(`<h1 class="en-title">${C.meter.heading}</h1>`),
+    el(`<h1 class="en-title pretty">${C.meter.heading}</h1>`),
     el(`<p class="lo">${C.meter.question}</p>`),
     el(`<div id="faceSlot">${faceSvg("sad")}</div>`),
     el(`<p class="en" id="meterEn">${C.meter.low.en}</p>`),
@@ -107,7 +134,7 @@ function renderMeter() {
     el(`<p class="pct" id="meterPct">0%</p>`),
     el(meterSvg()),
     el(`<input id="loveRange" type="range" min="0" max="100" value="0" />`),
-    el(`<button class="btn" type="button" id="meterNext" disabled>${C.meter.next}</button>`)
+    el(`<button class="btn" type="button" id="meterNext" disabled>♡  ${C.meter.next}</button>`)
   );
 
   const range = root.querySelector("#loveRange");
@@ -141,9 +168,9 @@ function renderBouquet() {
     ));
   });
   root.append(
-    el(`<h1 class="en-title">${C.bouquet.heading}</h1>`),
+    el(`<h1 class="en-title pretty">${C.bouquet.heading}</h1>`),
     wrap,
-    el(`<button class="btn" type="button" id="bqNext">${C.bouquet.next}</button>`)
+    el(`<button class="btn" type="button" id="bqNext">♡  ${C.bouquet.next}</button>`)
   );
   root.querySelector("#bqNext").onclick = () => nextOf("bouquet");
 }
@@ -161,11 +188,11 @@ function renderPhotos() {
   }
   root.innerHTML = "";
   root.append(
-    el(`<h1 class="en-title">${C.photos.heading}</h1>`),
+    el(`<h1 class="en-title pretty">${C.photos.heading}</h1>`),
     el(`<div class="polaroid"><img src="photos/us.jpg" alt="us" /></div>`),
     el(`<p class="lo">${C.photos.caption}</p>`),
     el(`<div class="player"><strong>${C.songTitle}</strong><span>${C.songArtist}</span>${media}</div>`),
-    el(`<button class="btn" type="button" id="phNext">${C.photos.next}</button>`)
+    el(`<button class="btn" type="button" id="phNext">♡  ${C.photos.next}</button>`)
   );
   root.querySelector("#phNext").onclick = () => nextOf("photos");
 }
@@ -180,10 +207,10 @@ function renderGifts() {
     row.appendChild(b);
   });
   root.append(
-    el(`<h1 class="en-title">${C.gifts.heading}</h1>`),
+    el(`<h1 class="en-title pretty">${C.gifts.heading}</h1>`),
     el(`<p class="lo">${C.gifts.sub}</p>`),
     row,
-    el(`<button class="btn" type="button" id="gfNext" disabled>${C.gifts.next}</button>`)
+    el(`<button class="btn" type="button" id="gfNext" disabled>♡  ${C.gifts.next}</button>`)
   );
   root.querySelector("#gfNext").onclick = () => nextOf("gifts");
 }
@@ -209,10 +236,10 @@ function renderTimeline() {
     ));
   });
   root.append(
-    el(`<h1 class="en-title">${C.timeline.heading}</h1>`),
+    el(`<h1 class="en-title pretty">${C.timeline.heading}</h1>`),
     el(`<p class="lo">${C.timeline.sub}</p>`),
     list,
-    el(`<button class="btn" type="button" id="tlNext">${C.timeline.next}</button>`)
+    el(`<button class="btn" type="button" id="tlNext">♡  ${C.timeline.next}</button>`)
   );
   root.querySelector("#tlNext").onclick = () => nextOf("timeline");
 }
@@ -222,14 +249,14 @@ function renderLetter() {
   const paras = C.letter.bodyLo.map((p) => `<p class="lo">${p}</p>`).join("");
   root.innerHTML = "";
   root.append(
-    el(`<h1 class="en-title">${C.letter.heading}</h1>`),
-    el(`<div class="letter-paper">${paras}<p class="en">${C.letter.bodyEn}</p><p class="sign">${C.letter.signoff}</p><p class="lo">${C.myName} → ${C.herName}</p></div>`)
+    el(`<h1 class="en-title pretty">${C.letter.heading}</h1>`),
+    el(`<div class="letter-paper">${faceSvg("win")}${paras}<p class="en">${C.letter.bodyEn}</p><p class="sign">${C.letter.signoff}</p><p class="lo">${C.myName} → ${C.herName} ♡</p></div>`)
   );
 }
 
 function spawnHearts() {
   const host = document.getElementById("floatHearts");
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < 22; i++) {
     const s = document.createElement("span");
     s.className = "fh";
     s.textContent = i % 2 ? "♥" : "♡";
