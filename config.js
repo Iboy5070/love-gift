@@ -1,7 +1,7 @@
 window.LOVE = {
   herName: "ແຟນ",
   myName: "ຂ້ອຍ",
-  siteUrl: "https://example.github.io/love-gift/",
+  siteUrl: "https://iboy5070.github.io/love-gift/",
 
   youtubeUrl: "",
   audioSrc: "",
