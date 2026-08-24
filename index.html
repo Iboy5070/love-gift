@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+Lao:wght@400;600;700&family=Noto+Serif+Lao:wght@600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="float-hearts" id="floatHearts" aria-hidden="true"></div>
+
+  <main class="phone">
+    <section class="screen active" id="screen-lock" data-screen="lock"></section>
+    <section class="screen" id="screen-meter" data-screen="meter" hidden></section>
+    <section class="screen" id="screen-bouquet" data-screen="bouquet" hidden></section>
+    <section class="screen" id="screen-photos" data-screen="photos" hidden></section>
+    <section class="screen" id="screen-gifts" data-screen="gifts" hidden></section>
+    <section class="screen" id="screen-timeline" data-screen="timeline" hidden></section>
+    <section class="screen" id="screen-letter" data-screen="letter" hidden></section>
+  </main>
+
+  <div class="modal hidden" id="giftModal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <p class="en" id="giftEn"></p>
+      <p class="lo" id="giftLo"></p>
+      <button type="button" class="btn" id="giftClose">OK</button>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
