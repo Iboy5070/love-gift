@@ -106,10 +106,9 @@ function renderLock() {
   const root = document.getElementById("screen-lock");
   root.innerHTML = "";
   root.append(
-    el(`<p class="kicker">a little gift</p>`),
     el(`<h1 class="en-title pretty">${C.lock.heading}</h1>`),
     el(`<p class="lo">${C.lock.body}</p>`),
-    el(`<div class="card cute" style="text-align:center">${decoStickers()}${faceSvg("high")}<p class="for-name">For ${C.herName}</p><p class="hint">tap when you are ready ♡</p></div>`),
+    el(`<div class="card cute" style="text-align:center">${decoStickers()}${faceSvg("high")}<p class="for-name">For ${C.herName}</p></div>`),
     el(`<button class="btn" type="button" id="lockBtn">♡  ${C.lock.button}</button>`)
   );
   root.querySelector("#lockBtn").onclick = () => nextOf("lock");
@@ -179,7 +178,7 @@ function renderPhotos() {
   const root = document.getElementById("screen-photos");
   const yt = C.youtubeUrl;
   const audio = C.audioSrc;
-  let media = `<p class="hint">Add youtubeUrl or audioSrc in config.js</p>`;
+  let media = "";
   if (yt) {
     const id = (yt.match(/[?&]v=([^&]+)/) || yt.match(/youtu\.be\/([^?]+)/) || [])[1];
     if (id) media = `<iframe src="https://www.youtube.com/embed/${id}" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
